@@ -172,28 +172,47 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-
+body{
+    background: gray;
+}
 
 header {
     background: white;
     padding: 20px;
-    font-family: sans-serif;
+    font-family: serif;
+    color: blue;
+    text-shadow: 
+    
 }
 
-.scord-board {
+.score-board {
     margin: 20px auto;
-    border: 3px solid white;
+    border: 3px solid blue;
     border-radius: 4px;
-    text-align: center;
     width: 200px;
-    color: white;
+    color: blue;
     padding: 15px 20px;
+    position: relative;
+}
+
+.user,.computer{
+    display: inline;
+    
+    
+}
+.user{
+    margin-left: -105px;
+    position: absolute;
+}
+.computer{
+    margin-left: 70px;
+    position: absolute;
 }
 
 
+.header{
 
-
-
+}
 
 
 
