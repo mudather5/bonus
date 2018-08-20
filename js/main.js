@@ -47,28 +47,7 @@ function draw(userChoice, computerChoice){
 
 function game(userChoice){
     var computerChoice = getComputerChoice();
-    /*switch (userChoice + computerChoice){
-            case "rock";
-            case "paper";
-            case "scissor";
-                win(userChoice, computerChoice);
-            console.log("user win");
-                break;
-            case ("rp");
-            case ("ps");
-            case ("sr");
-                lose(userChoice, computerChoice);
-            console.log(" user lost");
-                break;
-            case ("rr");
-            case ("pp");
-            case ("ss");
-                draw(userChoice, computerChoice);
-            console.log("draw");*/
-           
-   
 
-   
     if (userChoice === computerChoice){
       draw(userChoice, computerChoice);
     }
