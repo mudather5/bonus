@@ -8,109 +8,116 @@ var rock_div = document.getElementById("r");
 var paper_div = document.getElementById("p");
 var scissor_div = document.getElementById("s");
 
-
-function getComputerChoice(){
-     var choices = ["r", "p", "s"];
-     var nbRandom = Math.floor(Math.random()*3);
-     return choices[nbRandom];
-   
-}
-function convertToWord(letter){
-    if(letter === 'r')return 'rock';
     
-    if (letter === 'p')return 'paper';
+
+            
+
+    function getComputerChoice() {
+        var choices = ["r", "p", "s"];
+        var nbRandom = Math.floor(Math.random() * 3);
+        return choices[nbRandom];
+
+    }
+
+    function convertToWord(letter) {
+        if (letter === 'r') return 'rock';
+
+        if (letter === 'p') return 'paper';
+
+        return 'scissor';
+    }
+
+
+    function win(userChoice, computerChoice) {
+
+            
+            userScore_span.innerHTML = userScore;
+            computerScore_span.innerHTML = computerScore;
+            result_h5.innerHTML = convertToWord(userChoice) + '(user)' + " beat " + convertToWord(computerChoice) +  " user win";
+            userScore++;
+    }
+
+    function lose(userChoice, computerChoice) {
+
+            
+            userScore_span.innerHTML = userScore;
+            computerScore_span.innerHTML = computerScore;
+            result_h5.innerHTML = convertToWord(computerChoice) + '(computer)' + " beat " + convertToWord(userChoice) + " user lost";
+            computerScore++;
+
+    }
+
+    function draw(userChoice, computerChoice) {
+        result_h5.innerHTML = convertToWord(computerChoice) + " vs " + convertToWord(userChoice) + " draw ";
+
+    }
+
+    function game(userChoice) {
+        var computerChoice = getComputerChoice();
+
+        if (userChoice === computerChoice) {
+            draw(userChoice, computerChoice);
+        } else if (userChoice === "r") {
+            if (computerChoice === "p") {
+                win(userChoice, computerChoice);
+
+            } else {
+                lose(userChoice, computerChoice);
+
+            }
+        } else if (userChoice === "p") {
+            if (computerChoice === "r") {
+                win(userChoice, computerChoice);
+
+            } else {
+                lose(userChoice, computerChoice);
+
+            }
+        } else {
+            if (computerChoice === "r") {
+                if (userChoice === "s")
+                    lose(userChoice, computerChoice);
+
+            } else {
+                win(userChoice, computerChoice);
+
+            }
+        }
+        if (userScore < 4 || computerScore < 4){
+            userScore.stop();
+            computerScore.stop();
+        }else{
+
+            userScore = 0;
+            computerScore = 0;
+        }
+
+    }
+
+
+
+
+    function main() {
+
+        rock_div.addEventListener('click', function () {
+            game('r');
+        });
+
+        scissor_div.addEventListener('click', function () {
+            game('s');
+        });
+        paper_div.addEventListener('click', function () {
+            game('p');
+        });
+
+    }
+
+    main();
+
+
     
-    return 'scissor';
-}
 
-
-function win(userChoice, computerChoice){
-    userScore++;
-    userScore_span.innerHTML = userScore;
-    computerScore_span.innerHTML = computerScore;
-   result_h5.innerHTML = convertToWord(userChoice) + " beat " +convertToWord(computerChoice)  + " user win";
-    document.getElementById(userChoice).classList.add('green-glow');
-
-}
-
-function lose(userChoice, computerChoice){
-    computerScore++;
-    userScore_span.innerHTML = userScore;
-    computerScore_span.innerHTML = computerScore;
-    result_h5.innerHTML = convertToWord(computerChoice) + " beat " +convertToWord(userChoice)  + " computer win";
-    }
-
-function draw(userChoice, computerChoice){
-  result_h5.innerHTML = convertToWord(computerChoice) + " via " + convertToWord(userChoice) + " draw ";
-   
-}
-
-function game(userChoice){
-    var computerChoice = getComputerChoice();
-
-    if (userChoice === computerChoice){
-      draw(userChoice, computerChoice);
-    }
-    else if (userChoice === "r"){
-      if (computerChoice === "p"){
-            win(userChoice, computerChoice);
-      
-      } else {
-        lose(userChoice, computerChoice);
-
-      }
-    }
-     else if (userChoice === "p"){
-      if (computerChoice ==="r"){
-        win(userChoice, computerChoice);
-       
-      } else {
-        lose(userChoice, computerChoice);
-       
-      }
-    } else {
-      if (computerChoice ==="r") {
-        if(userChoice === "s")
-        lose(userChoice, computerChoice);
-      
-      } else {
-       win(userChoice, computerChoice);
-      
-      }
-    }
-   
-}
-
-
-function gameOver(){
-    if (userScore === 3 || computerScore === 3){
-        alert("game over");
-  }else{
-      alert("carry on");
-  }
-}
-
-function main(){
-   
-       rock_div.addEventListener('click', function(){
-      game('r');
-    });
-   
-    scissor_div.addEventListener('click', function(){
-        game('s');
-    });
-    paper_div.addEventListener('click', function(){
-        game('p');
-    });
-   
-}
-                                
-  main();                              
-
-
-     
-
- /* while (userScore < 3 && computerScore < 3){
+/* while (userScore < 3 && computerScore < 3){
     var userChoice = prompt("Choisissez pierre, feuille, ou sciseaux").toLocaleLowerCase();
     if(userChoice !== "pierre" && userChoice !== "feuille" && userChoice !== "sciseaux"){
       console.log ("rentrez une valeur correcte");
@@ -169,7 +176,7 @@ function main(){
 }*/
 
 
-//exercice 3 : nobre pair
+/*//exercice 3 : nobre pair
 
 function even(number) {
     let reminder = number % 2;
@@ -185,7 +192,7 @@ function even(number) {
 even(0);
 
 
-/*Exercice 4 : Vous avez dit factorielle ?*/
+//Exercice 4 : Vous avez dit factorielle ?
 
 
 function factorial(number)
@@ -203,7 +210,7 @@ function factorial(number)
 console.log(factorial(4));
 
 
-/*.Exercice 5 : Les tirets ça compte !*/
+//.Exercice 5 : Les tirets ça compte !
 
 
 var function myReplace(str, "-", "_"){
@@ -256,7 +263,4 @@ for(var i = 0; i < personne.length; i++){
 
 var array = [20, 50, 200, 100, 60, 10];
     function mathMax(){
-    }console.log(Math.max());
-
-
-
+    }console.log(Math.max());*/
