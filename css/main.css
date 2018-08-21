@@ -215,8 +215,12 @@ header {
 }
 
 .choices{
-    /*display: flex;*/
     text-align: center;
+}
+
+button{
+    margin-left: 45%;
+
 }
 
 #r,#p,#s{
