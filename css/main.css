@@ -270,6 +270,12 @@ h5{
     color: cornsilk;
 }
 
+button{
+    margin-left: 45%;
+    margin-bottom: 20px;
+
+}
+
 
 @media (min-width: 576px){
     
